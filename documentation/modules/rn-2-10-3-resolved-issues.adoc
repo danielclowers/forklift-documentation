@@ -1,0 +1,19 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Release_notes/master.adoc
+
+:_content-type: CONCEPT
+[id="resolved-issues-2-10-3_{context}"]
+= Resolved issues 2.10.3
+
+FC based migrations with Dell PowerStore storage fail during host registration::
+
+Before this update, virtual machine migrations that used Fibre Channel (FC) with Dell PowerStore storage could fail during storage offload. MTV attempted to register FC initiators by using the adapter ID format instead of the World Wide Port Name (WWPN), which caused host registration to fail and prevented persistent volume mapping. With this release, MTV correctly extracts and uses the WWPN for FC initiators, allowing migrations that use Dell PowerStore storage to complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-3680[MTV-3680]
+
+Warm migrations from VMware with storage offload fail due to incorrect secret usage::
+
+Before this update, warm migrations from VMware that used storage offload could fail with errors indicating missing access keys. MTV did not correctly use per disk credentials during the warm migration process, which caused storage offload operations to fail. With this release, MTV correctly uses per disk secrets for storage offload, allowing warm migrations from VMware to complete successfully.
++
+link:https://issues.redhat.com/browse/MTV-4062[MTV-4062]
